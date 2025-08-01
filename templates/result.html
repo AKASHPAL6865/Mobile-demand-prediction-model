@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>📱 Mobile Demand Prediction Result</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9fafa;
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 20px;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 26px;
+      color: #004d40;
+      border-left: 6px solid #26a69a;
+      padding-left: 12px;
+    }
+
+    h3 {
+      font-size: 20px;
+      color: #00796b;
+      margin-top: 30px;
+      border-bottom: 2px solid #80cbc4;
+      padding-bottom: 5px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .highlight {
+      font-size: 18px;
+      font-weight: bold;
+      color: #00796b;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      font-size: 15px;
+      padding: 4px 0;
+    }
+
+    ul li strong {
+      color: #37474f;
+    }
+
+    .plot-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .plot-grid img {
+      width: calc(48% - 4px);
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .plot-grid img:nth-child(5) {
+      width: 100%; /* Full width for last plot */
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #00bcd4;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #008ba3;
+    }
+
+    @media screen and (max-width: 768px) {
+      .plot-grid img {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📱 Mobile Demand Prediction Result</h2>
+
+  <div class="card">
+    <p class="highlight">{{ prediction_text|safe }}</p>
+    <p>🎯 <strong>Model Accuracy:</strong> {{ accuracy|round(2) }}%</p>
+    <p>🏷️ <strong>Predicted Brand:</strong> {{ brand }}</p>
+  </div>
+
+  <h3>📥 Your Input</h3>
+  <div class="card">
+    <ul>
+      {% for key, value in input_data.items() %}
+        <li><strong>{{ key.replace("_", " ").capitalize() }}:</strong> {{ value }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <h3>📊 Visual Insights</h3>
+  <div class="plot-grid">
+    <img src="{{ url_for('static', filename='plots/plot1.png') }}" alt="Battery vs Storage" />
+    <img src="{{ url_for('static', filename='plots/plot2.png') }}" alt="Advertisement vs Rating" />
+    <img src="{{ url_for('static', filename='plots/plot3.png') }}" alt="Price by Demand" />
+    
+    <img src="{{ url_for('static', filename='plots/plot5.png') }}" alt="Overall Demand Plot" />
+    <img src="{{ url_for('static', filename='plots/plot4.png') }}" alt="Brand-wise Demand" />
+  </div>
+
+  <a class="back-btn" href="/">🔙 Try Another Prediction</a>
+
+</body>
+</html>

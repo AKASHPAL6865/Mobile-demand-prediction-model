@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>📱 Mobile Demand Prediction</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f8ff;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      color: #333;
+    }
+    h1 {
+      color: #007acc;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+    input[type=number] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    input[type=submit] {
+      margin-top: 30px;
+      background-color: #007acc;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+    input[type=submit]:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <h1>📱 Mobile Demand Prediction</h1>
+  <form action="/predict" method="POST">
+    <label for="battery_mah">Battery (mAh):</label>
+    <input type="number" id="battery_mah" name="battery_mah" min="1000" max="10000" required />
+
+    <label for="advertisement_level">Advertisement Level (1-10):</label>
+    <input type="number" id="advertisement_level" name="advertisement_level" min="1" max="10" required />
+
+    <label for="Storage">Storage (GB):</label>
+    <input type="number" id="Storage" name="Storage" min="8" max="1024" required />
+
+    <label for="Memory">Memory (GB):</label>
+    <input type="number" id="Memory" name="Memory" min="1" max="64" required />
+
+    <label for="camera_mp">Camera (MP):</label>
+    <input type="number" id="camera_mp" name="camera_mp" min="1" max="200" required />
+
+    <label for="screen_size_inch">Screen Size (inch):</label>
+    <input type="number" step="0.1" id="screen_size_inch" name="screen_size_inch" min="3" max="10" required />
+
+    <label for="Rating">Rating (out of 5):</label>
+    <input type="number" step="0.1" id="Rating" name="Rating" min="0" max="5" required />
+
+    <input type="submit" value="Predict Demand" />
+  </form>
+</body>
+</html>
